@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Selbum</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
     <main class="albumMain loginState">
         
         <nav class="topBar">
             <a href="landing.html"><div class="logo"></div></a>
+            {% if s_username != None %}
             <a href="landing.html" class="logout">LOGOUT</a>
+            {% endif %}
         </nav>
         
         <div class="personalFormLink formLink btnHover">
