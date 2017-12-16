@@ -1,5 +1,5 @@
 <?php
-    include_once("auths.php");
+    include_once("api.php");
     $username = $_POST['username'];
     $password = $_POST['password']; 
     $nickname = $_POST['nickname'];
