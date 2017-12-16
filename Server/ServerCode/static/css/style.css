@@ -139,14 +139,30 @@ main {
     background-size: cover;
 }
 
-.authCon, .createCon {
+.authCon {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    max-width: 60rem;
+}
+
+.createCon {
     display: flex;
     width: 80%;
     margin: 0 auto;
     max-width: 30rem;
 }
 
-.authCon>div, .createCon>div {
+.authCon>div {
+    width: 49%;
+    border-radius: 2rem;
+    height: 30rem;
+    margin: 0 1.5rem;
+    padding: 3rem;
+    position: relative;
+}
+
+.createCon>div {
     width: 100%;
     border-radius: 2rem;
     height: 30rem;
