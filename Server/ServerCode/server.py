@@ -119,6 +119,24 @@ def eventForm_p():
     
     return build("성공적으로 업로드 하였습니다!", "/album.html")
 
+@app.route("/admin.html")
+def adminPage():
+    username = getUsername()
+    if username == None:
+        return build()
+    
+    aid = request.args.get("aid")
+    res = queryDB("SELECT role FROM Role WHERE username=? AND albumuid=?", [username, aid])
+
+#    if len(res) == 0 or str(res[0][0]) == "0":
+#        return build("당신은 권한이 없습니다")
+    
+    return render_template("admin.html")
+
+@app.route("/mockup")
+def mockupPage():
+    return render_template("mockup.html")
+
 @app.route("/personalForm", methods=["POST"])
 def personalForm_p():
     username = getUsername()
@@ -142,7 +160,7 @@ def personalForm_p():
     for i in range(len(imglist)):
         filename = str(i+1) + ".png"
         basepath = os.path.join(app.config['UPLOAD_FOLDER_PERSONAL'], username)
-        
+
         if not os.path.exists(basepath):
             os.mkdir(basepath)
         
@@ -312,7 +330,7 @@ def password_hash(password):
 DATABASE = 'database.db'
 
 def initDB():
-#    queryDB("DROP TABLE IF EXISTS User")
+    queryDB("DROP TABLE IF EXISTS User")
     res = str(queryDB("CREATE TABLE IF NOT EXISTS User (username TEXT PRIMARY KEY NOT NULL, nickname TEXT UNIQUE NOT NULL, email TEXT UNIQUE NOT NULL, phash TEXT NOT NULL)"))
 
 #    queryDB("DROP TABLE IF EXISTS Album")

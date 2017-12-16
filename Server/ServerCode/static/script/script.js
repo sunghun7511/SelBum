@@ -24,3 +24,6 @@ window.onload = function() {
         }
     }
 };
+function bllllllllllla(){
+    document.getElementById("customp").innerHTML = "<img src=\"/static/images/vtrImg/picture (25).jpg\" style=\"width:100%; height: 100%;\">";
+}

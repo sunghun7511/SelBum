@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Selbum</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/script/script.js"></script>
 </head>
 <body>
     <main class="adminMain loginState">
@@ -19,76 +20,76 @@
         
 <!--        가상으로 채워 넣은 값들      -->
         
-        <form>
+        <form action="/mockup">
             <div class="uploadCon">
                 
                 <h2>학생과 선생님의 사진 선택</h2>
                 
                 <h3>1반</h3>
                 <ul class="teacher1">
-                    <li class="who">담임 교사 name</li>
-                    <li class="picture1 picture"><input type="radio" name="teacher1" value="picture1"></li>
-                    <li class="picture2 picture"><input type="radio" name="teacher1" value="picture2"></li>
-                    <li class="picture3 picture"><input type="radio" name="teacher1" value="picture3"></li>
-                    <li class="picture4 picture"><input type="radio" name="teacher1" value="picture4"></li>
-                    <li class="picture5 picture"><input type="radio" name="teacher1" value="picture5"></li>
-                    <p class="phrases"></p>
+                    <li class="who"><h2>담임 교사 선생님1</h2></li>
+                    <li class="picture1 picture"><img src="/static/images/vtrImg/picture (1).jpg" style="height: 100%;"><br><input type="radio" name="teacher1" value="picture1"></li>
+                    <li class="picture2 picture"><img src="/static/images/vtrImg/picture (2).jpg" style="height: 100%;"><br><input type="radio" name="teacher1" value="picture2"></li>
+                    <li class="picture3 picture"><img src="/static/images/vtrImg/picture (3).jpg" style="height: 100%;"><br><input type="radio" name="teacher1" value="picture3"></li>
+                    <li class="picture4 picture"><img src="/static/images/vtrImg/picture (4).jpg" style="height: 100%;"><br><input type="radio" name="teacher1" value="picture4"></li>
+                    <li class="picture5 picture"><img src="/static/images/vtrImg/picture (5).jpg" style="height: 100%;"><br><input type="radio" checked="checked" name="teacher1" value="picture5"></li>
+                    <p class="phrases"><img src="/static/images/vtrImg/picture (5).jpg" style="width:100%; height: 100%;"></p>
                 </ul>
                 <ul class="student1-1">
-                    <li class="who">name</li>
-                    <li class="picture1 picture"><input type="radio" name="student1-1" value="picture1"></li>
-                    <li class="picture2 picture"><input type="radio" name="student1-1" value="picture2"></li>
-                    <li class="picture3 picture"><input type="radio" name="student1-1" value="picture3"></li>
-                    <li class="picture4 picture"><input type="radio" name="student1-1" value="picture4"></li>
-                    <li class="picture5 picture"><input type="radio" name="student1-1" value="picture5"></li>
-                    <p class="phrases"></p>
+                    <li class="who"><h2>홍길동</h2></li>
+                    <li class="picture1 picture"><img src="/static/images/vtrImg/picture (6).jpg" style="height: 100%;"><br><input type="radio" name="student1-1" value="picture1"></li>
+                    <li class="picture2 picture"><img src="/static/images/vtrImg/picture (7).jpg" style="height: 100%;"><br><input type="radio" name="student1-1" value="picture2"></li>
+                    <li class="picture3 picture"><img src="/static/images/vtrImg/picture (8).jpg" style="height: 100%;"><br><input type="radio" name="student1-1" value="picture3"></li>
+                    <li class="picture4 picture"><img src="/static/images/vtrImg/picture (9).jpg" style="height: 100%;"><br><input type="radio" checked="checked" name="student1-1" value="picture4"></li>
+                    <li class="picture5 picture"><img src="/static/images/vtrImg/picture (10).jpg" style="height: 100%;"><br><input type="radio" name="student1-1" value="picture5"></li>
+                    <p class="phrases"><img src="/static/images/vtrImg/picture (9).jpg" style="width:100%; height: 100%;"></p>
                 </ul>
                 <ul class="student1-2">
-                    <li class="who">name</li>
-                    <li class="picture1 picture"><input type="radio" name="student1-2" value="picture1"></li>
-                    <li class="picture2 picture"><input type="radio" name="student1-2" value="picture2"></li>
-                    <li class="picture3 picture"><input type="radio" name="student1-2" value="picture3"></li>
-                    <li class="picture4 picture"><input type="radio" name="student1-2" value="picture4"></li>
-                    <li class="picture5 picture"><input type="radio" name="student1-2" value="picture5"></li>
-                    <p class="phrases"></p>
+                    <li class="who"><h2>고길동</h2></li>
+                    <li class="picture1 picture"><img src="/static/images/vtrImg/picture (11).jpg" style="height: 100%;"><br><input checked="checked" type="radio" name="student1-2" value="picture1"></li>
+                    <li class="picture2 picture"><img src="/static/images/vtrImg/picture (12).jpg" style="height: 100%;"><br><input type="radio" name="student1-2" value="picture2"></li>
+                    <li class="picture3 picture"><img src="/static/images/vtrImg/picture (13).jpg" style="height: 100%;"><br><input type="radio" name="student1-2" value="picture3"></li>
+                    <li class="picture4 picture"><img src="/static/images/vtrImg/picture (14).jpg" style="height: 100%;"><br><input type="radio" name="student1-2" value="picture4"></li>
+                    <li class="picture5 picture"><img src="/static/images/vtrImg/picture (15).jpg" style="height: 100%;"><br><input type="radio" name="student1-2" value="picture5"></li>
+                    <p class="phrases"><img src="/static/images/vtrImg/picture (11).jpg" style="width:100%; height: 100%;"></p>
                 </ul>
                 <ul class="student1-3">
-                    <li class="who">name</li>
-                    <li class="picture1 picture"><input type="radio" name="student1-3" value="picture1"></li>
-                    <li class="picture2 picture"><input type="radio" name="student1-3" value="picture2"></li>
-                    <li class="picture3 picture"><input type="radio" name="student1-3" value="picture3"></li>
-                    <li class="picture4 picture"><input type="radio" name="student1-3" value="picture4"></li>
-                    <li class="picture5 picture"><input type="radio" name="student1-3" value="picture5"></li>
-                    <p class="phrases"></p>
+                    <li class="who"><h2>상길동</h2></li>
+                    <li class="picture1 picture"><img src="/static/images/vtrImg/picture (16).jpg" style="height: 100%;"><br><input type="radio" name="student1-3" value="picture1"></li>
+                    <li class="picture2 picture"><img src="/static/images/vtrImg/picture (17).jpg" style="height: 100%;"><br><input type="radio" name="student1-3" value="picture2"></li>
+                    <li class="picture3 picture"><img src="/static/images/vtrImg/picture (18).jpg" style="height: 100%;"><br><input checked="checked" type="radio" name="student1-3" value="picture3"></li>
+                    <li class="picture4 picture"><img src="/static/images/vtrImg/picture (19).jpg" style="height: 100%;"><br><input type="radio" name="student1-3" value="picture4"></li>
+                    <li class="picture5 picture"><img src="/static/images/vtrImg/picture (20).jpg" style="height: 100%;"><br><input type="radio" name="student1-3" value="picture5"></li>
+                    <p class="phrases"><img src="/static/images/vtrImg/picture (18).jpg" style="width:100%; height: 100%;"></p>
                 </ul>
                 <ul class="student1-4">
-                    <li class="who">name</li>
-                    <li class="picture1 picture"><input type="radio" name="student1-4" value="picture1"></li>
-                    <li class="picture2 picture"><input type="radio" name="student1-4" value="picture2"></li>
-                    <li class="picture3 picture"><input type="radio" name="student1-4" value="picture3"></li>
-                    <li class="picture4 picture"><input type="radio" name="student1-4" value="picture4"></li>
-                    <li class="picture5 picture"><input type="radio" name="student1-4" value="picture5"></li>
-                    <p class="phrases"></p>
+                    <li class="who"><h2>장길동</h2></li>
+                    <li class="picture1 picture"><img src="/static/images/vtrImg/picture (21).jpg" style="height: 100%;"><br><input type="radio" name="student1-4" value="picture1"></li>
+                    <li class="picture2 picture"><img src="/static/images/vtrImg/picture (22).JPG" style="height: 100%;"><br><input type="radio" name="student1-4" value="picture2"></li>
+                    <li class="picture3 picture"><img src="/static/images/vtrImg/picture (23).jpg" style="height: 100%;"><br><input type="radio" name="student1-4" value="picture3"></li>
+                    <li class="picture4 picture"><img src="/static/images/vtrImg/picture (24).jpg" style="height: 100%;"><br><input type="radio" name="student1-4" value="picture4"></li>
+                    <li class="picture5 picture"><img src="/static/images/vtrImg/picture (25).jpg" style="height: 100%;"><br><input onclick="bllllllllllla()" type="radio" name="student1-4" value="picture5"></li>
+                    <p class="phrases" id="customp"></p>
                 </ul>
                 
                 <h2>반 별 사진 요청 수락 및 거절</h2>
                 
                 <ul class="res1-1">
-                    <li class="who">name</li>
-                    <li class="picture1 picture"></li>
-                    <p class="phrases"></p>
-                    <input type="radio" name="res1" value="accept" id="res1-1t"><label for="rse1-1t">수락</label>
-                    <input type="radio" name="res1" value="deny" id="res1-1f"><label for="rse1-1f">거절</label>
+                    <li class="who"><h2>장길동</h2></li>
+                    <li class="picture1 picture"><img src="/static/images/vtrImg/picture (27).jpg" style="width: 100%;"></li>
+                    <p class="phrases"><img src="/static/images/vtrImg/picture (27).jpg" style="width: 100%;"></p>
+                    <!--<input type="radio" name="res1" value="accept" id="res1-1t"><label for="rse1-1t">수락</label>
+                    <input type="radio" name="res1" value="deny" id="res1-1f"><label for="rse1-1f">거절</label>-->
                 </ul>
                 
                 <h2>행사 사진 요청 수락 및 거절</h2>
                 
                 <ul class="res2-1">
-                    <li class="who">name</li>
-                    <li class="picture1 picture"></li>
-                    <p class="phrases"></p>
-                    <input type="radio" name="res1" value="accept" id="res2-1t"><label for="rse2-1t">수락</label>
-                    <input type="radio" name="res1" value="deny" id="res2-1f"><label for="rse2-1f">거절</label>
+                    <li class="who"><h2>고길동</h2></li>
+                    <li class="picture1 picture"><img src="/static/images/vtrImg/picture (26).jpg" style="width: 100%;"></li>
+                    <p class="phrases"><img src="/static/images/vtrImg/picture (26).jpg" style="width: 100%;"></p>
+                    <!--<input type="radio" name="res1" value="accept" id="res2-1t"><label for="rse2-1t">수락</label>
+                    <input type="radio" name="res1" value="deny" id="res2-1f"><label for="rse2-1f">거절</label>-->
                 </ul>
                 
                 <input type="submit" value="앨범 완성">
