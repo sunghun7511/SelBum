@@ -1,10 +1,17 @@
 # 페이지구성
 
 - landing
-  - 앨범 만들기 -> create
+  - 로그인/회원가입 -> auth
+  - 앨범 만들기 -> create 또는 auth
+  - 앨범 리스트 -> 클릭한 해당 album
+- auth
+  - 로그인
+  - 회원가입
+    - 학생 혹은 교사 인증(해당 앨범 학교 소속인지)
 - create
-- certification
-  - 학생 혹은 교사 인증(해당 앨범 학교 소속인지)
+  - 앨범 이름(앨범 별칭)
+  - 졸업 년도
+  - 학교
 - album
   - 개인 -> personalForm
   - 학급 -> classForm

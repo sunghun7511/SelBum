@@ -6,10 +6,26 @@
     <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
-    <main class="main">
+    <main class="landingMain">
+       
+        <nav class="topBar">
+            <a class="authLink">login/signup</a>
+        </nav>
+        
         <div class="logo"></div>
+        
+        <!-- createBtn : 
+            로그인 상태 -> create.html
+            비로그인 상태 -> auth.html
+        -->
         <a href="create.html" class="createBtn">create</a>
-        <p class="introContent">사이트 소개</p>
+        
+        <!-- albumList : 로그인 시에만 보임-->
+        <ul class="albumList">
+            <li class="albumListItem"><a>앨범 별칭</a></li>
+        </ul>
+        <!-- -->
+        
     </main>
 </body>
 </html>
