@@ -2,7 +2,6 @@
 
 - landing
   - 앨범 만들기 -> create
-  - 학교 검색 -> certification
 - create
 - certification
   - 학생 혹은 교사 인증(해당 앨범 학교 소속인지)
