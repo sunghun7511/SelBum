@@ -1,3 +1,8 @@
+@font-face {
+    font-family:"omniGothic";
+    src:url("../font/korean.ttf") format("truetype");
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,6 +11,7 @@
 
 a {
     text-decoration: none;
+    color: white;
 }
 
 ul {
@@ -18,9 +24,8 @@ ul {
 }
 
 .topBar {
-    background-color: #008132;
-    height: 4rem;
-    padding: 0.5rem 1rem;
+    padding: 1.2rem;
+    height: 3.9rem;
 }
 
 .logo {
@@ -31,51 +36,65 @@ ul {
 }
 
 .authLink {
-    font-size: 1rem;
-    line-height: 3rem;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
     float: right;
+    border: 1px solid white;
+    padding: 0 2rem;
+    color: white;
+    border-radius: 1.5rem
 }
 
 main {
-    text-align: center;
+    padding-bottom: 3rem;
 }
 
 /* Landing */
 
+.landingMain {
+    background: url(../images/landingBg.png);
+    background-size: cover;
+}
+
 .landingLogo {
-    width: 12rem;
-    height: 12rem;
-    background-color: red;
-    margin: 4rem auto;
+    width: 10rem;
+    height: 13rem;
+    margin: 6rem auto 4rem auto;
+    background: url(../images/logoMx.png);
+    background-size: cover;
 }
 
 .createBtn {
-    background-color: #6767ff;
-    padding: 0.7rem 2.5rem;
-    font-size: 1.4rem;
-    line-height: 1.4rem;
-    border-radius: 0.4rem;
+    background-image: url(../images/plusIcon.png);
+    background-size: 1.5rem;
+    background-repeat: no-repeat;
+    background-position: 13.8rem;
 }
 
-.albumList {
-    margin: 4rem auto;
-    width: 300px;
-    text-align: left;
-    padding: 1rem;
-    background-color: #b7ffd3;
+.createBtn, .albumListItem {
+    padding: 0.7rem 0;
+    margin: 2rem auto 0 auto;
+    font-size: 1rem;
+    line-height: 1rem;
+    border-radius: 2.4rem;
+    font-family: omniGothic;
+    color: white;
+    border: 1px solid white;
+    display: block;
+    width: 16rem;
+    text-align: center;
 }
 
-.albumListItem {
-    background-color: #a0ff94;
-    padding: 0.5rem;
+.btnHover {
+    transition: 0.2s background-color;
+    cursor: pointer;
 }
 
-.albumListItem:first-child {
-    margin-top: 1rem;
+.btnHover:hover {
+    background-color: rgba(255, 255, 255, 0.14);
 }
 
 .userAdminAlbum {
-    background-color: #00ff27;
 }
 
 /* Auth */
