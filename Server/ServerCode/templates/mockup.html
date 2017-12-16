@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>학교 졸업 앨범 미리보기</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        .class1 img {
+            height: 150px;
+            width: 100px;
+        }
+        
+        .class1 li {
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid #cecece;
+        }
+        
+        .class1 p {
+            text-align: center;
+            font-size: 1rem;
+            color: gray;
+        }
+        
+        h2 {
+            color: #ff00d8;
+        }
+        
+        .class1 {
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.42);
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 20px;
+            background-color: white;
+        }
+        
+        .sportDay img {
+            width: 300px;
+            transform: rotateZ(20deg);
+            position: absolute;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.42);
+            right: 60px;
+            top: 80px;
+        }
+        
+        .title2 {
+            position: absolute;
+            right: 400px;
+            font-size: 2rem;
+            color: #1b0058;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.47);
+        }
+        
+        .title3 {
+            position: absolute;
+            right: 130px;
+            top: 350px;
+            font-size: 2rem;
+            color: #0d4300;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.47);
+            z-index: 100;
+        }
+        
+        .retreat img {
+            width: 300px;
+            transform: rotateZ(-20deg);
+            position: absolute;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.42);
+            right: 300px;
+            top: 400px;
+        }
+        
+        .school {
+            width:700px;
+            position: absolute;
+            z-index: -100;
+            left: 60;
+            bottom: -10;
+        }
+    </style>
+</head>
+<body>
+    <div class="class1">
+       <h2>3학년 1반</h2>
+        <ul>
+            <li>
+                <img src="../static/images/vtrImg/picture%20(1).jpg" alt="">
+                <p>김가온</p>
+            </li>
+            <li>
+                <img src="../static/images/vtrImg/picture%20(2).jpg" alt="">
+                <p>김나온</p>
+            </li>
+            <li>
+                <img src="../static/images/vtrImg/picture%20(3).jpg" alt="">
+                <p>김다온</p>
+            </li>
+            <li>
+                <img src="../static/images/vtrImg/picture%20(4).jpg" alt="">
+                <p>김라온</p>
+            </li>
+            <li>
+                <img src="../static/images/vtrImg/picture%20(5).jpg" alt="">
+                <p>김마온</p>
+            </li>
+        </ul>
+    </div>
+    <h2 class="title2">즐거운 체육대회</h2>
+    <div class="sportDay">
+        <img src="../static/images/vtrImg/picture%20(27).jpg" alt="">
+    </div>
+    <h2 class="title3">1반의 수련회</h2>
+    <div class="retreat">
+        <img src="../static/images/vtrImg/picture%20(26).jpg" alt="">
+    </div>
+    <img src="../static/images/vtrImg/school.jpg" alt="" class="school">
+</body>
+</html>

@@ -383,3 +383,43 @@ input[type="file"] {
     width: 100%;
     height: 100%;
 }
+
+/* 예시 관리자 페이지 */
+
+h2 {
+    color: white;
+    margin: 2rem 0;
+}
+
+h3 {
+    color: white;
+    text-align: left;
+    padding: 2rem;
+}
+
+.adminMain ul {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.adminMain li {
+    width: 100%;
+    margin: 1rem;
+}
+
+.adminMain p {
+    width: 100%;
+    border: 1px solid white;
+}
+
+.adminMain .picture {
+    border: 1px solid white;
+    height: 10rem;
+}
+
+.adminMain input[type="submit"] {
+    margin-top: 10rem;
+    width: 20rem;
+    text-align: center;
+}
