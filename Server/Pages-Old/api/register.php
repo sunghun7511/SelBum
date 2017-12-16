@@ -12,10 +12,6 @@
     $queryLoginResult = mysqli_query($sql_conn, $queryLogin);
     $queryLoginArray = mysqli_fetch_array($queryLoginResult);
 
-    function d400($text){
-        http_response_code(400);
-        die($text);
-    }
 
     if(isset($queryLoginArray['username']))
         d400("already defined username");
