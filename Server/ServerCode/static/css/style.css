@@ -132,22 +132,22 @@ main {
 .userAdminAlbum {
 }
 
-/* auth */
+/* auth, create */
 
-.authMain {
+.authMain, .createMain {
     background: url(../images/landingBg.png);
     background-size: cover;
 }
 
-.authCon {
+.authCon, .createCon {
     display: flex;
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
-    max-width: 55rem;
+    max-width: 30rem;
 }
 
-.authCon>div {
-    width: 49%;
+.authCon>div, .createCon>div {
+    width: 100%;
     border-radius: 2rem;
     height: 30rem;
     margin: 0 1.5rem;
@@ -167,6 +167,18 @@ main {
     margin: 1rem 0;
 }
 
+.createInput {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    font-family: omniGothic;
+    font-weight: 100;
+    font-size: 1.2rem;
+    color: white;
+    width: 100%;
+    margin: 1rem 0;
+}
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: white;
 }
@@ -180,7 +192,7 @@ main {
   color: white;
 }
 
-.authCon input[type="submit"] {
+.authCon input[type="submit"], .createCon input[type="submit"] {
     font-family: odinBold;
     width: calc(100% - 6rem);
     font-size: 1.4rem;
@@ -192,7 +204,7 @@ main {
     bottom: 3rem;
 }
 
-.authCon input[type="submit"]:hover {
+.authCon input[type="submit"]:hover, .createCon input[type="submit"]:hover {
     background-color: rgba(255, 255, 255, 0.14);
 }
 
