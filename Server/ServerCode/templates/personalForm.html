@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Selbum</title>
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
     <main class="personalFormMain loginState">
@@ -16,34 +16,34 @@
         <h1 class="submitAlbum">개인 사진 제출</h1>
         
         <form>
-            <div class="con uploadCon">
-                <p class="description">제출한 사진은 우선순위를 고려하여 관리자가 선택합니다</p>
+            <div class="uploadCon">
+<!--                <p class="description">제출한 사진은 우선순위를 고려하여 관리자가 선택합니다</p>-->
                 
                 <!-- 이미지 업로드 -->
                 <ul>
-                    <!--
-                        관리자가 설정한 n개
-                        아래 예제는
-                        n=5
-                     -->
                     <li class="uploadImg">
-                        <label for="uploadImg1" class="imgCheck"></label>
+                        <div class="imgCheck"></div>
+                        <label for="uploadImg1" class="btnHover">사진 선택</label>
                         <input type="file" accept="image/*" id="uploadImg1">
                     </li>
                     <li class="uploadImg">
-                        <label for="uploadImg2" class="imgCheck"></label>
+                        <div class="imgCheck"></div>
+                        <label for="uploadImg2" class="btnHover">사진 선택</label>
                         <input type="file" accept="image/*" id="uploadImg2">
                     </li>
                     <li class="uploadImg">
-                        <label for="uploadImg3" class="imgCheck"></label>
+                        <div class="imgCheck"></div>
+                        <label for="uploadImg3" class="btnHover">사진 선택</label>
                         <input type="file" accept="image/*" id="uploadImg3">
                     </li>
                     <li class="uploadImg">
-                        <label for="uploadImg4" class="imgCheck"></label>
+                        <div class="imgCheck"></div>
+                        <label for="uploadImg4" class="btnHover">사진 선택</label>
                         <input type="file" accept="image/*" id="uploadImg4">
                     </li>
                     <li class="uploadImg">
-                        <label for="uploadImg5" class="imgCheck"></label>
+                        <div class="imgCheck"></div>
+                        <label for="uploadImg5" class="btnHover">사진 선택</label>
                         <input type="file" accept="image/*" id="uploadImg5">
                     </li>
                 </ul>
@@ -54,7 +54,7 @@
                     아래 예제는
                     문구 작성 : 사용
                 -->
-                <input type="text" placeholder="앨범에 사용될 문구를 작성 해 주세요">
+                <input type="text" placeholder="앨범에 사용될 문구를 작성 해 주세요" class="phrasesInput">
                 
                 <!-- 사용자는 여러번 제출이 가능하며 가장 최신 것으로 저장 -->
                 <input type="submit" value="사진 제출">

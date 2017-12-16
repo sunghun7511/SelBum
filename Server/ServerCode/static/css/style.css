@@ -255,3 +255,81 @@ main {
 .adminLink:hover {
     text-decoration: underline;
 }
+
+/* form */
+
+.submitAlbum {
+    font-family:"omniGothic";
+    color: white;
+    text-align: center;
+    margin: 2rem 0 2.5rem 0;
+    font-size: 1.4rem;
+}
+
+.uploadCon {
+    text-align: center;
+}
+
+.uploadImg {
+    width: 10rem;
+    display: inline-block;
+    margin: 0.5rem 1rem;
+}
+
+.imgCheck {
+    border: 1px solid white;
+    height: 15rem;
+}
+
+.uploadImg label {
+    padding: 0.6rem 0;
+    margin: 2rem auto 0 auto;
+    font-size: 1rem;
+    line-height: 1rem;
+    border-radius: 2.4rem;
+    font-family: omniGothic;
+    color: white;
+    border: 1px solid white;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: url(../images/fileIcon.png);
+    background-size: 1.5rem;
+    background-repeat: no-repeat;
+    background-position: 8rem center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.phrasesInput {
+    background: none;
+    border: 1px solid white;
+    padding: 1rem;
+    text-align: left;
+    width: 30rem;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    font-family: omniGothic;
+}
+
+.loginState input[type="submit"] {
+    background: none;
+    border: 1px solid white;
+    padding: 1rem;
+    text-align: left;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    font-family: omniGothic;
+    color: white;
+    height: 3rem;
+    margin-left: -7px;
+    transition: 0.2s background-color;
+    cursor: pointer;
+}
+
+.loginState input[type="submit"]:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+}
