@@ -3,16 +3,24 @@
 
 from flask import *
 from datetime import timedelta
-import hashlib, sqlite3, re
-import sys
+from werkzeug import secure_filename
+
+import hashlib, sqlite3, re, sys, uuid, os
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-
 app = Flask(__name__)
 app.secret_key = "Code_Review_Fuck_you_HAAHAHAHAAHAHHAHAHAHAHAHAHAHHAHAHAHAHAAH"
+
+UPLOAD_FOLDER = './imgs/'
+UPLOAD_FOLDER_PERSONAL = './imgs/personal/'
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'svg'])
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER_PERSONAL'] = UPLOAD_FOLDER_PERSONAL
+
 
 @app.route("/")
 @app.route("/index.html")
@@ -24,10 +32,10 @@ def index():
     if username != None:
         re = queryDB("SELECT albumuid FROM Role WHERE username=? AND role=0", [username])
         for r in re:
-            names[r] = queryDB("SELECT name FROM Album WHERE uid=?", [r])[0][0]
+            names[r[0]] = queryDB("SELECT name FROM Album WHERE uid=?", [r[0]])[0][0]
         re2 = queryDB("SELECT albumuid FROM Role WHERE username=? AND role=1", [username])
         for r2 in re2:
-            my[r] = queryDB("SELECT name FROM Album WHERE uid=?", [r])[0][0]
+            my[r2[0]] = queryDB("SELECT name FROM Album WHERE uid=?", [r2[0]])[0][0]
 
     return render_template("landing.html", s_username = username, s_nickname = getNickname(username), my = my, names = names)
 
@@ -42,7 +50,100 @@ def album():
         return build()
     aid = request.args.get("albumid")
 
-    return render_template("album.html", s_username = username, s_nickname = getNickname(username))
+    return render_template("album.html", s_username = username, s_nickname = getNickname(username), aid=aid)
+
+@app.route("/classForm.html")
+def classForm():
+    username = getUsername()
+    if username == None:
+        return build()
+    return render_template("classForm.html")
+
+@app.route("/eventForm.html")
+def eventForm():
+    username = getUsername()
+    if username == None:
+        return build()
+    return render_template("eventForm.html")
+
+@app.route("/personalForm.html")
+def personalForm():
+    username = getUsername()
+    if username == None:
+        return build()
+    return render_template("personalForm.html")
+
+@app.route("/classForm", methods=["POST"])
+def classForm_p():
+    username = getUsername()
+    if username == None:
+        return build()
+    foldertype = 1 # "class"
+    aid = request.args.get("aid")
+
+    img = request.files['upImg']
+    description = request.form["description"].strip()
+        
+    if img and allowed_file(img.filename):
+        filename = str(uuid.uuid4()) + ".png"
+        img.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        
+        queryDB("INSERT INTO Pictures(filename, owner, albumid, foldertype, priority, description) VALUES(?, ?, ?, ?, ?, ?)", [filename, username, aid, foldertype, 0, description])
+    else:
+        return back("파일이 올바르지 않습니다!")
+    
+    return build("성공적으로 업로드 하였습니다!", "/album.html")
+
+
+@app.route("/eventForm", methods=["POST"])
+def eventForm_p():
+    username = getUsername()
+    if username == None:
+        return build()
+    foldertype = 2 # "event"
+    aid = request.args.get("aid")
+
+    img = request.files['upImg']
+    description = request.form["description"].strip()
+        
+    if img and allowed_file(img.filename):
+        filename = str(uuid.uuid4()) + ".png"
+        img.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        
+        queryDB("INSERT INTO Pictures(filename, owner, albumid, foldertype, priority, description) VALUES(?, ?, ?, ?, ?, ?)", [filename, username, aid, foldertype, 0, description])
+    else:
+        return back("파일이 올바르지 않습니다!")
+    
+    return build("성공적으로 업로드 하였습니다!", "/album.html")
+
+
+@app.route("/create.html")
+def html_create():
+    username = getUsername()
+    if username == None:
+        return build()
+    return render_template("create.html", s_username = username, s_nickname = getNickname(username))
+
+@app.route("/create", methods=["POST"])
+def create():
+    username = getUsername()
+    if username == None:
+        return build()
+    albumName = request.form["albumName"].strip()
+    graduYear = int(request.form["graduYear"].strip())
+    schName = request.form["schName"].strip()
+
+    cont = queryDB("SELECT * FROM Album WHERE name=? OR schoolname=?", [albumName, schName])
+    if len(cont) > 0:
+        return back("앨범이 이미 존재하거나 학교 이름이 이미 존재합니다.")
+    
+    queryDB("INSERT INTO Album (name, schoolname, graduyear) VALUES(?, ?, ?)", [albumName, schName, graduYear])
+    no = queryDB("SELECT uid FROM Album WHERE name=?", [albumName])[0][0]
+
+    queryDB("INSERT INTO Role (username, albumuid, role) VALUES(?, ?, ?)", [username, no, 1])
+
+    return build("성공적으로 생성하였습니다!", "/album.html?albumid=" + str(no))
+
 
 @app.route("/logout")
 def auth_logout():
@@ -180,19 +281,15 @@ def initDB():
     res = str(queryDB("CREATE TABLE IF NOT EXISTS User (username TEXT PRIMARY KEY NOT NULL, nickname TEXT UNIQUE NOT NULL, email TEXT UNIQUE NOT NULL, phash TEXT NOT NULL)"))
 
 #    queryDB("DROP TABLE IF EXISTS Album")
-    res += "\n\n" + str(queryDB("CREATE TABLE IF NOT EXISTS Album (uid INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT NOT NULL, personalCount INTEGER NOT NULL, usePersonalDescription Integer NOT NULL DEFAULT 0)"))
+    res += "\n\n" + str(queryDB("CREATE TABLE IF NOT EXISTS Album (uid INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT NOT NULL, schoolname TEXT NOT NULL, graduyear INTEGER NOT NULL)"))
     
     
 #    queryDB("DROP TABLE IF EXISTS Role")
-    res += "\n\n" + str(queryDB("CREATE TABLE IF NOT EXISTS Role (username TEXT UNIQUE NOT NULL, albumuid INTEGER NOT NULL, role INTEGER NOT NULL DEFAULT 0)"))
+    res += "\n\n" + str(queryDB("CREATE TABLE IF NOT EXISTS Role (username TEXT NOT NULL, albumuid INTEGER NOT NULL, role INTEGER NOT NULL DEFAULT 0)"))
     
     
 #    queryDB("DROP TABLE IF EXISTS Pictures")
     res += "\n\n" + str(queryDB("CREATE TABLE IF NOT EXISTS Pictures (filename TEXT UNIQUE NOT NULL, owner TEXT NOT NULL, albumid INTEGER NOT NULL, foldertype INTEGER NOT NULL, priority INTEGER NOT NULL, description TEXT)"))
-    
-    
-#    queryDB("DROP TABLE IF EXISTS AccessToken")
-    res += "\n\n" + str(queryDB("CREATE TABLE IF NOT EXISTS AccessToken (username TEXT UNIQUE NOT NULL, accesstoken TEXT UNIQUE NOT NULL)"))
     
     print("DB connect success")
     return res
@@ -218,7 +315,9 @@ def queryDB(query, args=(), one=False):
     con.commit()
     return (rv[0] if rv else None) if one else rv
 
-
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 @app.before_first_request
 def load():

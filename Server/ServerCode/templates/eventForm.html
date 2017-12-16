@@ -15,7 +15,7 @@
         
         <h1 class="submitAlbum">행사 사진 제출</h1>
         
-        <form>
+        <form action="/eventForm" enctype="multipart/form-data" method="post">
             <div class="uploadCon">
                 
                 <!-- 이미지 업로드 -->
@@ -23,10 +23,10 @@
                     <p class="description">요청한 사진은 관리자에 의해 수락/거절 됩니다</p>
                     <div class="imgCheck"></div>
                     <label for="uploadImg1" class="btnHover vtrInput">사진 선택</label>
-                    <input type="file" accept="image/*" id="uploadImg1">
+                    <input name="upImg" type="file" accept="image/*" id="uploadImg1">
                 </div>
                 
-                <input type="text" placeholder="사진 부가 설명 ex) 세준이와 함께 찍은 체육대회 사진입니다" class="phrasesInput">
+                <input name="description" type="text" placeholder="사진 부가 설명 ex) 세준이와 함께 찍은 체육대회 사진입니다" class="phrasesInput">
                 
                 <!-- 사용자는 여러번 제출이 가능하고 제출한 모든 사진이 요청된다 -->
                 <input type="submit" value="사진 요청">
