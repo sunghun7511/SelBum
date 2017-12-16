@@ -57,21 +57,24 @@ def classForm():
     username = getUsername()
     if username == None:
         return build()
-    return render_template("classForm.html")
+    aid = request.args.get("aid")
+    return render_template("classForm.html", aid=aid)
 
 @app.route("/eventForm.html")
 def eventForm():
     username = getUsername()
     if username == None:
         return build()
-    return render_template("eventForm.html")
+    aid = request.args.get("aid")
+    return render_template("eventForm.html", aid=aid)
 
 @app.route("/personalForm.html")
 def personalForm():
     username = getUsername()
     if username == None:
         return build()
-    return render_template("personalForm.html")
+    aid = request.args.get("aid")
+    return render_template("personalForm.html", aid=aid)
 
 @app.route("/classForm", methods=["POST"])
 def classForm_p():
@@ -138,7 +141,12 @@ def personalForm_p():
     
     for i in range(len(imglist)):
         filename = str(i+1) + ".png"
-        request.files['upImg' + str(imglist[i])].save(os.path.join(os.path.join(app.config['UPLOAD_FOLDER_PERSONAL'], username), filename))
+        basepath = os.path.join(app.config['UPLOAD_FOLDER_PERSONAL'], username)
+        
+        if not os.path.exists(basepath):
+            os.mkdir(basepath)
+        
+        request.files['upImg' + str(imglist[i])].save(os.path.join(basepath, filename))
         queryDB("INSERT INTO Pictures(filename, owner, albumid, foldertype, priority, description) VALUES(?, ?, ?, ?, ?, ?)", [filename, username, aid, foldertype, 0, description])
     
     return build("성공적으로 업로드 하였습니다!", "/album.html")
