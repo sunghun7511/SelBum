@@ -4,6 +4,11 @@
 from flask import *
 from datetime import timedelta
 import hashlib, sqlite3, re
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 
 
 app = Flask(__name__)
@@ -13,29 +18,33 @@ app.secret_key = "Code_Review_Fuck_you_HAAHAHAHAAHAHHAHAHAHAHAHAHAHHAHAHAHAHAAH"
 @app.route("/index.html")
 @app.route("/landing.html")
 def index():
-    return render_template("landing.html")
+    username = getUsername()
+    
+    return render_template("landing.html", s_username = username, s_nickname = getNickname(username))
 
 @app.route("/auth.html")
 def auth():
     return render_template("auth.html")
 
 @app.route("/login", methods=["POST"])
-def auth_req():
+def auth_login():
     id = request.form["loginId"].strip()
     pw = password_hash(request.form["loginPw"].strip())
 
-    if len(id) < 5 or len(id) > 30 or len(pw) < 5 or len(pw) > 30:
-        return back("아이디 또는 비밀번호가 너무 짧거나 깁니다.")
+    if len(id) < 5 or len(id) > 30:
+        return back("아이디가 너무 짧거나 깁니다.")
     
     res = queryDB("SELECT nickname FROM User WHERE username=? AND phash=?", [id, pw])
     
     if len(res) == 0:
         return back("아이디 또는 비밀번호를 데이터베이스에서 검색을 하다가 보여줄 결과물을 찾지 못해서 이런 결과를 내보내게 되었습니다. 이 결과에 대해 대단히 죄송하게 생각하는 바입니다.")
+    
+    session['username'] = id
 
-    return "<script>alert(\"로그인하신것을 환영합니다.<br>"+res[0][0]+" 님\");location.href=\"/\"</script>"
+    return str(unicode("<script>alert(\"로그인하였습니다!\\n"+res[0][0]+" 님\");location.href=\"/\"</script>"))
 
 @app.route("/register", methods=["POST"])
-def auth_req():
+def auth_register():
     username = request.form["signupId"].strip()
     password = request.form["signupPw"].strip()
     nickname = request.form["signupNickname"].strip()
@@ -105,12 +114,28 @@ def auth_req():
     phash = password_hash(password)
     queryDB("INSERT INTO User (username, nickname, phash, email) VALUES(?, ?, ?, ?);", [username, nickname, phash, email])
 
-    return "<script>alert(\"로그인하신것을 환영합니다.<br>"+nickname+" 님\");location.href=\"/\"</script>"
+    return str(unicode("<script>alert(\"회원가입 하였습니다.\\n"+nickname+" 님\");location.href=\"/\"</script>"))
 
 
+
+def getUsername():
+    if isLogin():
+        return session["username"]
+    else:
+        return None
+
+
+def getNickname(username):
+    q = queryDB("SELECT nickname FROM User WHERE username=?", [username])
+    if q is None or len(q) == 0:
+        return None
+    return q[0][0]
+
+def isLogin():
+    return "username" in session and session["username"] != ""
 
 def back(message="로그인이 필요합니다."):
-    return "<script>alert(\"" + message + "\");window.history.back();</script>"
+    return str(unicode("<script>alert(\"" + message + "\");window.history.back();</script>"))
 
 def password_hash(password):
     h = hashlib.sha512()
