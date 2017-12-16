@@ -40,22 +40,22 @@ CREATE TABLE IF NOT EXISTS User (username TEXT PRIMARY KEY NOT NULL, nickname TE
 | :--------------------- | ----------- | ------------------------------------ |
 | uid                    | INTEGER     | PRIMARY KEY AUTOINCREMENT NOT NULL   |
 | name                   | TEXT        | NOT NULL                             |
-| personalCount          | INTEGER     | NOT NULL                             |
-| usePersonalDescription | INTEGER     | NOT NULL DEFAULT 0                   |
+| schoolname             | TEXT        | NOT NULL                             |
+| graduyear              | INTEGER     | NOT NULL                             |
 
 ```
-CREATE TABLE IF NOT EXISTS Album (uid INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT NOT NULL, personalCount INTEGER NOT NULL, usePersonalDescription Integer NOT NULL DEFAULT 0)
+CREATE TABLE IF NOT EXISTS Album (uid INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT NOT NULL, schoolname TEXT NOT NULL, graduyear INTEGER NOT NULL)
 ```
 
 ## Role
 | Column      | Type        | Options            |
 | :---------- | ----------- | ------------------ |
-| username    | TEXT        | NOT NULL UNIQUE    |
+| username    | TEXT        | NOT NULL           |
 | albumuid    | INTEGER     | NOT NULL           |
 | role        | INTEGER     | NOT NULL DEFAULT 0 |
 
 ```
-CREATE TABLE IF NOT EXISTS Role (username TEXT UNIQUE NOT NULL, albumuid INTEGER NOT NULL, role INTEGER NOT NULL DEFAULT 0)
+CREATE TABLE IF NOT EXISTS Role (username TEXT NOT NULL, albumuid INTEGER NOT NULL, role INTEGER NOT NULL DEFAULT 0)
 ```
 
 ## Pictures
@@ -70,14 +70,4 @@ CREATE TABLE IF NOT EXISTS Role (username TEXT UNIQUE NOT NULL, albumuid INTEGER
 
 ```
 CREATE TABLE IF NOT EXISTS Pictures (filename TEXT UNIQUE NOT NULL, owner TEXT NOT NULL, albumid INTEGER NOT NULL, foldertype INTEGER NOT NULL, priority INTEGER NOT NULL, description TEXT)
-```
-
-## AccessToken
-| Column      | Type    | Options           |
-| :---------- | ------- | ----------------- |
-| username    | TEXT    | NOT NULL UNIQUE   |
-| accesstoken | TEXT    | NOT NULL UNIQUE   |
-
-```
-CREATE TABLE IF NOT EXISTS AccessToken (username TEXT UNIQUE NOT NULL, accesstoken TEXT UNIQUE NOT NULL)
 ```
