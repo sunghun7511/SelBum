@@ -31,6 +31,16 @@ ul {
     height: 5.9rem;
 }
 
+.loginState .topBar {
+    padding: 1.5rem 2rem;
+    height: 4.5rem;
+    background-color: #493649;
+}
+
+.loginState {
+    background:linear-gradient(to top, #9E79C6, #D371AF, #FD9E9F );
+}
+
 .logo {
     width: 5rem;
     height: 1.5rem;
@@ -52,9 +62,22 @@ ul {
     letter-spacing: 2px;
 }
 
+.logout {
+    margin-right: 2rem;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+    float: right;
+    padding: 0 0rem;
+    color: white;
+    font-family: odinBold;
+    letter-spacing: 2px;
+    border-bottom: 1px solid white;
+}
+
 main {
     padding-bottom: 3rem;
     min-height: 100vh;
+    position: relative;
 }
 
 .btnHover {
@@ -175,4 +198,60 @@ main {
 
 /* album */
 
-/* input */
+.albumMain {
+    text-align: center;
+}
+
+.formLink {
+    display: inline-block;
+    margin: 6rem 1.5rem 0 1.5rem;
+    padding: 2rem;
+    width: 14rem;
+}
+
+.formLink a {
+    display: block;
+    width: 100%;
+    height: 19rem;
+    padding-top: 15rem;
+    font-size: 1rem;
+    line-height: 1rem;
+    text-align: center;
+}
+
+.personalFormLink a {
+    background-image: url(../images/personalIcon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.classFormLink a {
+    background-image: url(../images/classIcon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.eventFormLink a {
+    background-image: url(../images/eventIcon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.adminLink {
+    display: block;
+    width: 4.5rem;
+    height: 6.3rem;
+    font-size: 1rem;
+    line-height: 1rem;
+    background-image: url(../images/adminIcon.png);
+    background-repeat: no-repeat;
+    background-size: 4.5rem auto;
+    background-position: bottom;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.adminLink:hover {
+    text-decoration: underline;
+}
