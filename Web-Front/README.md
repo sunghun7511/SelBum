@@ -17,6 +17,7 @@
   - 학급 -> classForm
   - 행사 -> eventForm
   - 롤링페이퍼 -> rollingPaper
+  - 관리자페이지 -> admin
 - personalForm
   - 사진 올리기(본인에게 맞는)
   - 다른 사람 사진 보기(슬라이드)
@@ -32,4 +33,4 @@
 - rollingPage
   - 검색
   - 문구 입력(모달)
- 
+- admin
