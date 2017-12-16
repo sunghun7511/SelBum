@@ -8,5 +8,70 @@ a {
     text-decoration: none;
 }
 
+ul {
+    list-style: none;
+}
+
 .con {
+}
+
+.topBar {
+    background-color: #008132;
+    height: 4rem;
+    padding: 0.5rem 1rem;
+}
+
+.logo {
+    width: 3rem;
+    height: 3rem;
+    background-color: #ff0000;
+    float: left;
+}
+
+.authLink {
+    font-size: 1rem;
+    line-height: 3rem;
+    float: right;
+}
+
+main {
+    text-align: center;
+}
+
+/* Landing */
+
+.landingLogo {
+    width: 12rem;
+    height: 12rem;
+    background-color: red;
+    margin: 4rem auto;
+}
+
+.createBtn {
+    background-color: #6767ff;
+    padding: 0.7rem 2.5rem;
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    border-radius: 0.4rem;
+}
+
+.albumList {
+    margin: 4rem auto;
+    width: 300px;
+    text-align: left;
+    padding: 1rem;
+    background-color: #b7ffd3;
+}
+
+.albumListItem {
+    background-color: #a0ff94;
+    padding: 0.5rem;
+}
+
+.albumListItem:first-child {
+    margin-top: 1rem;
+}
+
+.userAdminAlbum {
+    background-color: #00ff27;
 }
