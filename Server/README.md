@@ -5,8 +5,8 @@
 ## URI
 | URI         | Description | Method      | Parameters  | Response Code | Response |
 | :---------- | ----------- | ----------- | ----------- | ------------- | -------- |
-| /api/login.php | send login request | POST | username - String <br> password - String | 200 OK <br/> 400 Bad Request | 200 Access Token <br> 403 None |
-| /api/register.php | send register request | POST | username - String <br> password - String <br> nickname - String <br> email - String | 200 OK <br> 400 Bad Request | 200 Access Token <br> 403 fail message |
+| /api/login.php | send login request | POST | username - String <br> password - String | 200 OK <br/> 400 Bad Request | 200 Access Token <br> 400 Fail message |
+| /api/register.php | send register request | POST | username - String <br> password - String <br> nickname - String <br> email - String | 200 OK <br> 400 Bad Request | 200 Access Token <br> 400 Fail message |
 | /api/create.php | create new album | POST | albumname - String <br> personalpicturecount - int <br> usepersonaldescription - Boolean <br> accesstoken - String | 200 OK <br> 400 Bad Request <br> 401 Unauthorized  | 200 Album uid <br> 400 Fail message <br> 401 None |
 | /api/setrole.php | set role(Only admin) | POST | albumname - String <br> username - String <br> role - RoleType <br> accesstoken - String | 200 OK <br> 400 Bad Request <br> 401 Unauthorized | 200 None <br> 400 Fail message <br> 401 None
 | /api/getrole.php | get role | POST | albumname - String <br> username - String <br> accesstoken - String | 200 OK <br> 400 Bad Request <br> 401 Unauthorized | 200 RoleType <br> 400 Fail message <br> 401 None
