@@ -116,6 +116,33 @@ def eventForm_p():
     
     return build("성공적으로 업로드 하였습니다!", "/album.html")
 
+@app.route("/personalForm", methods=["POST"])
+def personalForm_p():
+    username = getUsername()
+    if username == None:
+        return build()
+    foldertype = 0 # "personal"
+    aid = request.args.get("aid")
+
+    imglist = list()
+
+    for i in range(5):
+        img = request.files["upImg" + str(i+1)]
+        if img and allowed_file(img.filename):
+            imglist.append(str(i+1))
+    
+    description = request.form["description"].strip()
+    
+    if len(imglist) == 0:
+        back("올바른 파일들을 올려주세요")
+    
+    for i in range(len(imglist)):
+        filename = str(i+1) + ".png"
+        request.files['upImg' + str(imglist[i])].save(os.path.join(os.path.join(app.config['UPLOAD_FOLDER_PERSONAL'], username), filename))
+        queryDB("INSERT INTO Pictures(filename, owner, albumid, foldertype, priority, description) VALUES(?, ?, ?, ?, ?, ?)", [filename, username, aid, foldertype, 0, description])
+    
+    return build("성공적으로 업로드 하였습니다!", "/album.html")
+
 
 @app.route("/create.html")
 def html_create():
