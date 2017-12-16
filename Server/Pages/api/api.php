@@ -1,5 +1,10 @@
 <?php
     include_once("./db.php");
+
+    header("Content-Type: application/json");
+    header("Access-Control-Allow-Origin: *");
+    header("charset=utf-8");
+
     function hash_password($password) {
         return hash('sha512', $password);
     }
@@ -11,7 +16,9 @@
     function getUsernameFromAccessToken($access_token){
         return "username";
     }
-
+<<<<<<< HEAD
+=======
+    
 
     function login($username, $password) {
         $password = hash_password($password);
@@ -27,4 +34,5 @@
     }
 
     
+>>>>>>> d50ad2faee4b170bb019404b7f653c5026234449
 ?>

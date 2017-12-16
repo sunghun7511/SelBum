@@ -1,5 +1,6 @@
 <?php
     include_once("api.php");
+    include_once("db.php");
     $username = $_POST['username'];
     $password = $_POST['password']; 
     $nickname = $_POST['nickname'];
