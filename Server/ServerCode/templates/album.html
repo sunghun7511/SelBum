@@ -3,40 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Selbum</title>
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
-    <main class="albumMain">
+    <main class="albumMain loginState">
         
         <nav class="topBar">
-            <div class="logo"></div>
+            <a href="landing.html"><div class="logo"></div></a>
+            <a href="landing.html" class="logout">LOGOUT</a>
         </nav>
         
-        <div class="personalFormLink">
+        <div class="personalFormLink formLink btnHover">
             <a href="personalForm.html">
                 개인 사진
             </a>
         </div>
         
-        <div class="classFormLink">
+        <div class="classFormLink formLink btnHover">
             <a href="classForm.html">
                 학급 사진
             </a>
         </div>
         
-        <div class="eventFormLink">
+        <div class="eventFormLink formLink btnHover">
             <a href="eventForm.html">
                 행사 사진
             </a>
         </div>
         
-        <div class="rollingPaperLink">
-            <a href="rollingPage">
-                롤링페이퍼 작성
-            </a>
-        </div>
-        
-        <a href="admin.html" class="adminLink">앨범 관리</a>
+        <a href="admin.html" class="adminLink ">앨범 관리</a>
     </main>
 </body>
 </html>
