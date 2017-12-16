@@ -9,41 +9,43 @@
     <main class="authMain">
        
         <nav class="topBar">
-            <div class="logo"></div>
+            <a href="landing.html"><div class="logo"></div></a>
         </nav>
         
-        <div class="con loginCon">
-            <form action="/login" method="post">
-                <div>
-                    <input class="authInput" type="text" placeholder="username"/>
-                </div>
-                <div>
-                    <input class="authInput" type="password" placeholder="password" />
-                </div>
-                <div>
-                    <input class="authInput" type="sumbit" value="LOGIN" />
-                </div>
-            </form>    
-        </div>
-        
-        <div class="con signupCon">
-            <form action="/register" method="post">
-                <div>
-                    <input class="authInput" type="text" placeholder="username" />
-                </div>
-                <div>
-                    <input class="authInput" type="password" placeholder="password" />
-                </div>
-                <div>
-                    <input class="authInput" type="text" placeholder="nickname" />
-                </div>
-                <div>
-                    <input class="authInput" type="email" placeholder="your email" />
-                </div>
-                <div>
-                    <input class="authInput" type="submit" value="SIGNUP"/>
-                </div>
-            </form>
+        <div class="authCon">
+            <div class="con loginCon">
+                <form action="/login" method="post">
+                    <div>
+                        <input class="authInput" type="text" placeholder="username"/>
+                    </div>
+                    <div>
+                        <input class="authInput" type="password" placeholder="password" />
+                    </div>
+                    <div>
+                        <input type="submit" value="LOGIN" />
+                    </div>
+                </form>    
+            </div>
+
+            <div class="con signupCon">
+                <form action="/register" method="post">
+                    <div>
+                        <input class="authInput" type="text" placeholder="username" />
+                    </div>
+                    <div>
+                        <input class="authInput" type="password" placeholder="password" />
+                    </div>
+                    <div>
+                        <input class="authInput" type="text" placeholder="nickname" />
+                    </div>
+                    <div>
+                        <input class="authInput" type="email" placeholder="your email" />
+                    </div>
+                    <div>
+                        <input type="submit" value="SIGN UP"/>
+                    </div>
+                </form>
+            </div>
         </div>
     </main>
 </body>
