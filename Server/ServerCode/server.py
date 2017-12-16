@@ -3,7 +3,7 @@
 
 from flask import *
 from datetime import timedelta
-import hashlib, sqlite3
+import hashlib, sqlite3, re
 
 
 app = Flask(__name__)
@@ -36,18 +36,76 @@ def auth_req():
 
 @app.route("/register", methods=["POST"])
 def auth_req():
-    id = request.form["loginId"].strip()
-    pw = password_hash(request.form["loginPw"].strip())
+    username = request.form["signupId"].strip()
+    password = request.form["signupPw"].strip()
+    nickname = request.form["signupNickname"].strip()
+    email = request.form["signupEmail"].strip()
 
-    if len(id) < 5 or len(id) > 30 or len(pw) < 5 or len(pw) > 30:
-        return back("아이디 또는 비밀번호가 너무 짧거나 깁니다.")
+        
+    if username == None or username == "":
+        return back("아이디는 공백일 수 없습니다.")
     
-    res = queryDB("SELECT nickname FROM User WHERE username=? AND phash=?", [id, pw])
+    if len(username) < 4 or len(username) > 20:
+        return back("아이디는 4글자 ~ 20글자 사이로 입력해주세요.")
     
-    if len(res) == 0:
-        return back("아이디 또는 비밀번호를 데이터베이스에서 검색을 하다가 보여줄 결과물을 찾지 못해서 이런 결과를 내보내게 되었습니다. 이 결과에 대해 대단히 죄송하게 생각하는 바입니다.")
+    m = re.search("[a-zA-Z0-9\\*\\$\\_\\&\\!]+", username)
+    if m is None or len(m.group()) != len(username):
+        return back("아이디가 올바르지 않습니다!")
+    
+    dbres = queryDB("SELECT * FROM User WHERE username=?", [username])
+    if dbres is not None and len(dbres) != 0:
+        return back("이미 존재하는 아이디입니다!")
+    
+    
+    if password == None or password == "":
+        return back("비밀번호는 공백일 수 없습니다.")
+    
+    if len(password) < 6 or len(password) > 20:
+        return back("비밀번호는 6글자 ~ 20글자 사이로 입력해주세요.")
+    
+    if password == username:
+        return back("아이디와 비밀번호는 같을 수 없습니다!")
+    
+    m = re.search("[a-zA-Z0-9@\\*\\$\\_\\&\\!]+", password)
+    if m is None or len(m.group()) != len(password):
+        return back("비밀번호가 올바르지 않습니다!")
+    
+    
+    if email is None or len(email) < 3:
+        return back("올바르지 않은 이메일입니다!")
+    
+    m = re.search("([\.0-9a-z_-]+)@([0-9a-z_-]+)(\.[0-9a-z_-]+){1,2}", email)
+    if m is None or len(m.group()) != len(email):
+        return back("올바르지 않은 이메일입니다!")
+    
+    dbres = queryDB("SELECT * FROM User WHERE email=?", [email])
+    if dbres is not None and len(dbres) != 0:
+        return back("이미 존재하는 이메일입니다!")
+    
+    
+    
+    if nickname == None or nickname == "":
+        nickname = username
+    
+    if len(nickname) < 1 or len(nickname) > 20:
+        return back("닉네임은 1글자 ~ 20글자 사이로 입력해주세요.")
+    
+    m = re.search("[a-zA-Z0-9\\*\\$\\_\\&\\!가-힣　 ]+", nickname)
+    if m is None or len(m.group()) != len(nickname):
+        return back("닉네임이 올바르지 않습니다!")
+    
+    m = re.search("[ ]+", nickname)
+    if m is not None and len(m.group()) == len(nickname):
+        return back("닉네임이 올바르지 않습니다!")
+    
+    dbres = queryDB("SELECT * FROM User WHERE nickname=?", [nickname])
+    if dbres is not None and len(dbres) != 0:
+        return back("이미 존재하는 닉네임입니다!")
 
-    return "<script>alert(\"로그인하신것을 환영합니다.<br>"+res[0][0]+" 님\");location.href=\"/\"</script>"
+    phash = password_hash(password)
+    queryDB("INSERT INTO User (username, nickname, phash, email) VALUES(?, ?, ?, ?);", [username, nickname, phash, email])
+
+    return "<script>alert(\"로그인하신것을 환영합니다.<br>"+nickname+" 님\");location.href=\"/\"</script>"
 
 
 
