@@ -1,6 +1,6 @@
 <?php
 
-include_once("auths.php");
+include_once("api.php");
 $username = $_POST['username'];
 $password = $_POST['password'];
 if(login($username, $password) == TRUE)
@@ -11,7 +11,8 @@ if(login($username, $password) == TRUE)
 
 else
 {
-    http_response_code(403);
-    die("None");
+    http_response_code(400);
+    die("");
 }
+
 ?>
