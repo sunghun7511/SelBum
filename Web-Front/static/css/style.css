@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:100');
 @font-face {
     font-family:"omniGothic";
     src:url("../font/korean.ttf") format("truetype");
+    font-weight:lighter;
+}
+@font-face {
+    font-family:"odinBold";
+    src:url("../font/english.otf")
+    format("truetype");
+    font-weight:lighter;
 }
 
 * {
@@ -18,21 +26,18 @@ ul {
     list-style: none;
 }
 
-.con {
-    background-color: blue;
-    width: 40%;
-}
-
 .topBar {
-    padding: 1.2rem;
-    height: 3.9rem;
+    padding: 2.2rem 3rem;
+    height: 5.9rem;
 }
 
 .logo {
-    width: 3rem;
-    height: 3rem;
-    background-color: #ff0000;
+    width: 5rem;
+    height: 1.5rem;
     float: left;
+    background-image: url(../images/logoMn.png);
+    background-size: auto 1.5rem;
+    background-repeat: no-repeat;
 }
 
 .authLink {
@@ -42,11 +47,27 @@ ul {
     border: 1px solid white;
     padding: 0 2rem;
     color: white;
-    border-radius: 1.5rem
+    border-radius: 1.5rem;
+    font-family: odinBold;
+    letter-spacing: 2px;
 }
 
 main {
     padding-bottom: 3rem;
+    min-height: 100vh;
+}
+
+.btnHover {
+    transition: 0.2s background-color;
+    cursor: pointer;
+}
+
+.btnHover:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.con {
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
 /* Landing */
@@ -85,19 +106,73 @@ main {
     text-align: center;
 }
 
-.btnHover {
-    transition: 0.2s background-color;
-    cursor: pointer;
-}
-
-.btnHover:hover {
-    background-color: rgba(255, 255, 255, 0.14);
-}
-
 .userAdminAlbum {
 }
 
-/* Auth */
+/* auth */
+
+.authMain {
+    background: url(../images/landingBg.png);
+    background-size: cover;
+}
+
+.authCon {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    max-width: 55rem;
+}
+
+.authCon>div {
+    width: 49%;
+    border-radius: 2rem;
+    height: 30rem;
+    margin: 0 1.5rem;
+    padding: 3rem;
+    position: relative;
+}
 
 .authInput {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 100;
+    font-size: 1.5rem;
+    color: white;
+    width: 100%;
+    margin: 1rem 0;
 }
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: white;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: white;
+}
+
+.authCon input[type="submit"] {
+    font-family: odinBold;
+    width: calc(100% - 6rem);
+    font-size: 1.4rem;
+    background:none;
+    border: 1px solid white;
+    color: white;
+    border-radius: 2rem;
+    position: absolute;
+    bottom: 3rem;
+}
+
+.authCon input[type="submit"]:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+/* album */
+
+/* input */
