@@ -13,6 +13,8 @@ ul {
 }
 
 .con {
+    background-color: blue;
+    width: 40%;
 }
 
 .topBar {
@@ -74,4 +76,9 @@ main {
 
 .userAdminAlbum {
     background-color: #00ff27;
+}
+
+/* Auth */
+
+.authInput {
 }
