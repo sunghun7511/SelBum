@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Selbum</title>
     <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/script/script.js"></script>
 </head>
 <body>
     <main class="authMain">
@@ -13,35 +14,35 @@
         </nav>
         
         <div class="con loginCon">
-            <form action="/login" method="post">
+            <form>
                 <div>
-                    <input class="authInput" type="text" placeholder="username"/>
+                    <input id="loginId" class="authInput" type="text" placeholder="username"/>
                 </div>
                 <div>
-                    <input class="authInput" type="password" placeholder="password" />
+                    <input id="loginPw" class="authInput" type="password" placeholder="password" />
                 </div>
                 <div>
-                    <input class="authInput" type="sumbit" value="LOGIN" />
+                    <input class="authInput" type="submit" value="LOGIN" id="loginSubmit" />
                 </div>
             </form>    
         </div>
         
         <div class="con signupCon">
-            <form action="/register" method="post">
+            <form>
                 <div>
-                    <input class="authInput" type="text" placeholder="username" />
+                    <input id="signupId" class="authInput" type="text" placeholder="username" />
                 </div>
                 <div>
-                    <input class="authInput" type="password" placeholder="password" />
+                    <input id="signupPw" class="authInput" type="password" placeholder="password" />
                 </div>
                 <div>
-                    <input class="authInput" type="text" placeholder="nickname" />
+                    <input id="signupNickname" class="authInput" type="text" placeholder="nickname" />
                 </div>
                 <div>
-                    <input class="authInput" type="email" placeholder="your email" />
+                    <input id="signupEmail" class="authInput" type="email" placeholder="your email" />
                 </div>
                 <div>
-                    <input class="authInput" type="submit" value="SIGNUP"/>
+                    <input class="authInput" type="submit" value="SIGNUP" id="signupSubmit" />
                 </div>
             </form>
         </div>
