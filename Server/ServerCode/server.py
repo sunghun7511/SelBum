@@ -19,12 +19,38 @@ app.secret_key = "Code_Review_Fuck_you_HAAHAHAHAAHAHHAHAHAHAHAHAHAHHAHAHAHAHAAH"
 @app.route("/landing.html")
 def index():
     username = getUsername()
-    
-    return render_template("landing.html", s_username = username, s_nickname = getNickname(username))
+    names = dict()
+    my = dict()
+    if username != None:
+        re = queryDB("SELECT albumuid FROM Role WHERE username=? AND role=0", [username])
+        for r in re:
+            names[r] = queryDB("SELECT name FROM Album WHERE uid=?", [r])[0][0]
+        re2 = queryDB("SELECT albumuid FROM Role WHERE username=? AND role=1", [username])
+        for r2 in re2:
+            my[r] = queryDB("SELECT name FROM Album WHERE uid=?", [r])[0][0]
+
+    return render_template("landing.html", s_username = username, s_nickname = getNickname(username), my = my, names = names)
 
 @app.route("/auth.html")
 def auth():
     return render_template("auth.html")
+
+@app.route("/album.html", methods=["GET"])
+def album():
+    username = getUsername()
+    if username == None:
+        return build()
+    aid = request.args.get("albumid")
+
+    return render_template("album.html", s_username = username, s_nickname = getNickname(username))
+
+@app.route("/logout")
+def auth_logout():
+    if isLogin():
+        session.pop("username", None)
+        return build("로그아웃 하였습니다.")
+    else:
+        return build("로그인되지 않았습니다.")
 
 @app.route("/login", methods=["POST"])
 def auth_login():
@@ -133,6 +159,11 @@ def getNickname(username):
 
 def isLogin():
     return "username" in session and session["username"] != ""
+
+def build(message="로그인이 필요합니다.", to="index.html"):
+    if not to.startswith("/"):
+        to = "/" + to
+    return str(unicode("<script>alert(\"" + message + "\");location.href=\"" + to + "\";</script>"))
 
 def back(message="로그인이 필요합니다."):
     return str(unicode("<script>alert(\"" + message + "\");window.history.back();</script>"))

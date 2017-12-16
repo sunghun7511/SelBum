@@ -9,7 +9,11 @@
     <main class="landingMain">
        
         <nav class="topBar">
+            {% if s_username == None %}
             <a href="auth.html" class="authLink btnHover">LOGIN / SIGNUP</a>
+            {% else %}
+            <a class="authLink btnHover" href="logout">{{ s_nickname }} 님 환영합니다.</a>
+            {% endif %}
         </nav>
         
         <div class="landingLogo"></div>
@@ -18,17 +22,25 @@
             로그인 상태 -> create.html
             비로그인 상태 -> auth.html
         -->
+        {% if s_username == None %}
+        <a href="auth.html" class="createBtn btnHover">졸업앨범 만들기</a>
+        {% else %}
         <a href="create.html" class="createBtn btnHover">졸업앨범 만들기</a>
+        {% endif %}
         
+        {% if s_username != None %}
         <!-- albumList : 로그인 시에만 보임-->
         <ul class="albumList">
             <!-- userAdminAlbum : 사용자가 관리자인 앨범 -->
-            <li class="albumListItem btnHover userAdminAlbum"><a href="">앨범 별칭1</a></li>
-            <li class="albumListItem btnHover"><a href="">앨범 별칭1</a></li>
-            <li class="albumListItem btnHover"><a href="">앨범 별칭1</a></li>
-            <li class="albumListItem btnHover"><a href="">앨범 별칭1</a></li>
+            {% for key, value in my.iteritems() %}
+            <li class="albumListItem btnHover userAdminAlbum"><a href="/album.html?albumid={{key}}">{{ value }}</a></li>
+            {% endfor %}
+            {% for key, value in names.iteritems() %}
+            <li class="albumListItem btnHover"><a href="/album.html?albumid={{key}}">{{ value }}</a></li>
+            {% endfor %}
         </ul>
         <!-- -->
+        {% endif %}
         
     </main>
 </body>
