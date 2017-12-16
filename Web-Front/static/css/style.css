@@ -31,6 +31,16 @@ ul {
     height: 5.9rem;
 }
 
+.loginState .topBar {
+    padding: 1.5rem 2rem;
+    height: 4.5rem;
+    background-color: #F7B59B;
+}
+
+.loginState {
+    background-color: #493649;
+}
+
 .logo {
     width: 5rem;
     height: 1.5rem;
@@ -50,6 +60,18 @@ ul {
     border-radius: 1.5rem;
     font-family: odinBold;
     letter-spacing: 2px;
+}
+
+.logout {
+    margin-right: 2rem;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+    float: right;
+    padding: 0 0rem;
+    color: white;
+    font-family: odinBold;
+    letter-spacing: 2px;
+    border-bottom: 1px solid white;
 }
 
 main {
