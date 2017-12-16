@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selbum</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <main class="landingMain">
+       
+        <nav class="topBar">
+            <a href="auth.html" class="authLink btnHover">LOGIN / SIGNUP</a>
+        </nav>
+        
+        <div class="landingLogo"></div>
+        
+        <!-- createBtn : 
+            로그인 상태 -> create.html
+            비로그인 상태 -> auth.html
+        -->
+        <a href="create.html" class="createBtn btnHover">졸업앨범 만들기</a>
+        
+        <!-- albumList : 로그인 시에만 보임-->
+        <ul class="albumList">
+            <!-- userAdminAlbum : 사용자가 관리자인 앨범 -->
+            <li class="albumListItem btnHover userAdminAlbum"><a href="">앨범 별칭1</a></li>
+            <li class="albumListItem btnHover"><a href="">앨범 별칭1</a></li>
+            <li class="albumListItem btnHover"><a href="">앨범 별칭1</a></li>
+            <li class="albumListItem btnHover"><a href="">앨범 별칭1</a></li>
+        </ul>
+        <!-- -->
+        
+    </main>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selbum</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/script/script.js"></script>
+</head>
+<body>
+    <main class="authMain">
+       
+        <nav class="topBar">
+            <a href="landing.html"><div class="logo"></div></a>
+        </nav>
+        
+        <div class="authCon">
+            <div class="con loginCon">
+                <form action="/login" method="post">
+                    <div>
+                        <input id="loginId" class="authInput" type="text" placeholder="username"/>
+                    </div>
+                    <div>
+                        <input id="loginPw" class="authInput" type="password" placeholder="password" />
+                    </div>
+                    <div>
+                        <input type="submit" value="LOGIN" id="loginSubmit" class="btnHover"/>
+                    </div>
+                </form>    
+            </div>
+
+            <div class="con signupCon">
+                <form action="/register" method="post">
+                    <div>
+                        <input id="signupId" class="authInput" type="text" placeholder="username" />
+                    </div>
+                    <div>
+                        <input id="signupPw" class="authInput" type="password" placeholder="password" />
+                    </div>
+                    <div>
+                        <input id="signupNickname" class="authInput" type="text" placeholder="nickname" />
+                    </div>
+                    <div>
+                        <input id="signupEmail" class="authInput" type="email" placeholder="your email" />
+                    </div>
+                    <div>
+                        <input type="submit" value="SIGN UP" id="signupSubmit" class="btnHover" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
